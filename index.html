@@ -1,199 +1,158 @@
-<!-- 
-    DOCUMENTAÇÃO DE ESTRUTURA (Simulação de XML)
-    <jogo>
-        <titulo>Caçadores da Tumba</titulo>
-        <genero>Roguelike 2D de Ação e Estratégia</genero>
-        <mecanica_principal>Alternância de 4 Personagens em Tempo Real</mecanica_principal>
-        <elementos>Menu, Tutorial, Loop Procedural, Evolução Contínua</elementos>
-    </jogo>
--->
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GDD - Caçadores da Tumba</title>
-    
-    <!-- Importando fontes de aventura do Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Special+Elite&display=swap" rel="stylesheet">
-    
+    <title>Sitemap - Caçadores da Tumba</title>
     <style>
-        /* 1. FUNDO E CORPO */
-        body {
-            background-color: #2c1e14;
-            background-image: url('https://www.transparenttextures.com/patterns/dark-leather.png');
-            font-family: 'Special+Elite', Courier, serif;
-            color: #3d2b1f;
-            display: flex;
-            justify-content: center;
-            padding: 40px 20px;
-            margin: 0;
+        :root {
+            --main-blue: #3a89c9;
+            --sub-blue: #4fc3f7;
+            --leaf-green: #66bb6a;
+            --line-color: #bdbdbd;
         }
 
-        /* 2. O PERGAMINHO */
-        .pergaminho {
-            background-color: #f2e3c9;
-            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
-            max-width: 850px;
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
             padding: 50px;
-            border: 15px solid #3d2b1f;
-            box-shadow: 0 0 50px rgba(0,0,0,0.8), inset 0 0 100px rgba(139, 69, 19, 0.2);
+        }
+
+        .sitemap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Estrutura de Nós */
+        .node {
+            color: white;
+            padding: 15px 25px;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 2px;
+            min-width: 140px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Cores dos Níveis */
+        .level-1 { background-color: var(--main-blue); font-size: 22px; width: 200px; }
+        .level-2 { background-color: var(--sub-blue); margin-bottom: 20px; }
+        .level-3 { background-color: var(--leaf-green); margin-bottom: 10px; font-size: 14px; text-align: left; }
+
+        /* Container das Colunas */
+        .columns-container {
+            display: flex;
+            gap: 40px;
+            position: relative;
+            margin-top: 40px;
+        }
+
+        /* Linhas Conectoras Superiores */
+        .columns-container::before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background-color: var(--line-color);
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
             position: relative;
         }
 
-        /* Detalhe de "Ouro" nas quinas */
-        .pergaminho::before {
-            content: "✦";
+        /* Linha Vertical que desce do topo para cada coluna */
+        .column::before {
+            content: "";
             position: absolute;
-            top: 10px; left: 10px;
-            color: #d4af37;
-            font-size: 24px;
+            top: -20px;
+            left: 50%;
+            width: 2px;
+            height: 20px;
+            background-color: var(--line-color);
         }
 
-        /* 3. TIPOGRAFIA E TEXTOS */
-        h1, h2 { font-family: 'Cinzel', serif; text-align: center; text-transform: uppercase; }
-        h1 { color: #8b4513; border-bottom: 2px solid #d4af37; padding-bottom: 10px; letter-spacing: 2px; }
-        h2 { color: #b22222; margin-top: 40px; font-size: 1.5rem; text-align: left; border-bottom: 1px solid rgba(178, 34, 34, 0.3); padding-bottom: 5px; }
-        p { line-height: 1.6; text-align: justify; margin-bottom: 15px; }
-        
-        .texto-destaque { font-weight: bold; color: #8b4513; }
-
-        /* 4. LISTAS ESTILIZADAS */
-        ul { list-style: none; padding-left: 20px; }
-        li { margin: 12px 0; position: relative; }
-        .lore-lista li::before { content: "✕ "; color: #b22222; font-weight: bold; position: absolute; left: -25px; }
-        
-        .prog-lista li { border-bottom: 1px dashed #b5a48b; padding: 5px 0; }
-        .prog-lista li::before { content: "📜 "; position: absolute; left: -25px; }
-
-        .personagens { background: rgba(212, 175, 55, 0.2); padding: 2px 8px; border-radius: 4px; font-weight: bold; color: #5d4037; }
-        .tecla { background: #3d2b1f; color: #d4af37; padding: 0 5px; border-radius: 3px; font-family: monospace; }
-        .destaque-ouro { color: #b8860b; font-weight: bold; }
-
-        /* 5. TABELA DE ATRIBUTOS */
-        .tabela-atributos {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            font-family: 'Special+Elite', serif;
-            background-color: rgba(255, 255, 255, 0.1);
+        /* Linhas Verticais laterais para os itens verdes */
+        .sub-items {
+            border-left: 3px solid var(--line-color);
+            margin-left: 10px;
+            padding-left: 20px;
+            display: flex;
+            flex-direction: column;
         }
-        .tabela-atributos th {
-            font-family: 'Cinzel', serif;
-            background-color: rgba(139, 69, 19, 0.15);
-            color: #8b4513;
-            border-bottom: 2px solid #3d2b1f;
-            padding: 12px;
-        }
-        .tabela-atributos td {
-            text-align: center;
-            padding: 12px;
-            border-bottom: 1px solid rgba(61, 43, 31, 0.2);
-        }
-        .tabela-atributos tr:hover { background-color: rgba(212, 175, 55, 0.15); }
 
-        hr { border: 0; height: 2px; background-image: linear-gradient(to right, transparent, #d4af37, transparent); margin: 30px 0; }
+        /* Linha horizontal conectando o item verde à linha vertical */
+        .level-3 {
+            position: relative;
+        }
+        .level-3::before {
+            content: "";
+            position: absolute;
+            left: -23px;
+            top: 50%;
+            width: 20px;
+            height: 2px;
+            background-color: var(--line-color);
+        }
+
+        .home-line {
+            width: 2px;
+            height: 20px;
+            background-color: var(--line-color);
+        }
     </style>
 </head>
 <body>
 
-    <div class="pergaminho">
-        <h1>Manifesto da Expedição</h1>
-        <p style="text-align: center; font-style: italic; color: #555;">Documento Oficial de Design - Caçadores da Tumba</p>
+<div class="sitemap">
+    <div class="node level-1">Home</div>
+    <div class="home-line"></div>
+
+    <div class="columns-container">
         
-        <!-- Texto Explicativo Inserido -->
-        <p><span class="texto-destaque">A Experiência Roguelike:</span> Em "Caçadores da Tumba", a morte não é o fim, mas sim um passo crucial para o aprendizado. A cada nova tentativa, o algoritmo do jogo gera tumbas de forma procedural, alterando corredores, armadilhas e a posição dos inimigos. O jogador é constantemente desafiado a adaptar sua estratégia, equilibrando o risco de explorar mais a fundo e a recompensa de encontrar relíquias valiosas.</p>
-        <p>A verdadeira maestria é alcançada dominando a <span class="texto-destaque">Sincronia Tática</span>: a habilidade de alternar instantaneamente entre quatro heróis complementares para sobreviver a um ambiente implacável e em constante mutação.</p>
+        <div class="column">
+            <div class="node level-2">Sobre</div>
+            <div class="sub-items">
+                <div class="node level-3">Giovanni, Lucas, Gabriel</div>
+                <div class="node level-3">O Projeto Roguelike</div>
+            </div>
+        </div>
 
-        <hr>
+        <div class="column">
+            <div class="node level-2">Personagens</div>
+            <div class="sub-items">
+                <div class="node level-3">Pedro (Tanque)</div>
+                <div class="node level-3">Ingrid (Suporte)</div>
+                <div class="node level-3">Otávio (Distância)</div>
+                <div class="node level-3">Uriel (Versátil)</div>
+            </div>
+        </div>
 
-        <h2>I. Posto de Comando (Menu)</h2>
-        <ul class="lore-lista">
-            <li><strong>Nova Incursão:</strong> Inicia a jornada nas profundezas (Leva ao Tutorial).</li>
-            <li><strong>Registros Antigos:</strong> Carrega um progresso ou melhorias salvas.</li>
-            <li><strong>Equipamentos:</strong> Ajustes de som, vídeo e mapeamento de comandos.</li>
-            <li><strong>Abandonar Tumba:</strong> Retorna ao sistema operacional.</li>
-        </ul>
+        <div class="column">
+            <div class="node level-2">Mecânicas</div>
+            <div class="sub-items">
+                <div class="node level-3">Troca em Tempo Real</div>
+                <div class="node level-3">Teclas U, I, O e P</div>
+                <div class="node level-3">Mapas Procedurais</div>
+            </div>
+        </div>
 
-        <h2>II. Diário de Campo (Fluxo de Jogo)</h2>
-        <ul class="lore-lista">
-            <li><strong>Fase 1: O Despertar (Tutorial):</strong>
-                <ul class="lore-lista">
-                    <li>Sozinho no Escuro: Pedro acorda isolado e aprende mecânicas de sobrevivência e defesa básica.</li>
-                    <li>Reunião da Equipe: Encontro progressivo com Ingrid, Otávio e Uriel.</li>
-                    <li>Desbloqueio: O sistema de alternância de heróis em tempo real é ativado.</li>
-                </ul>
-            </li>
-            <li><strong>Fase 2: O Labirinto Eterno (Loop Principal):</strong>
-                <ul class="lore-lista">
-                    <li>Arquitetura Mutável: Exploração de mapas gerados proceduralmente.</li>
-                    <li>Combate Estratégico: Troca de heróis conforme a fraqueza do inimigo.</li>
-                    <li>O Guardião: Enfrentamento de Chefes únicos para mudar de andar.</li>
-                </ul>
-            </li>
-        </ul>
+        <div class="column">
+            <div class="node level-2">Gameplay</div>
+            <div class="sub-items">
+                <div class="node level-3">Tutorial (Pedro)</div>
+                <div class="node level-3">Risco e Recompensa</div>
+                <div class="node level-3">Evolução do Jogador</div>
+            </div>
+        </div>
 
-        <h2>III. A Irmandade (Personagens)</h2>
-        <ul class="lore-lista">
-            <li><span class="personagens">Pedro</span> - O Tanque (Escudo e Porrete). Absorve o dano da linha de frente. <span class="tecla">U</span></li>
-            <li><span class="personagens">Ingrid</span> - A Curandeira (Magia Vital). Mantém o grupo vivo nas batalhas longas. <span class="tecla">I</span></li>
-            <li><span class="personagens">Otávio</span> - O Atirador (Armas de Fogo). Dano severo à distância. <span class="tecla">O</span></li>
-            <li><span class="personagens">Uriel</span> - O Polivalente (Combate Misto). Equilíbrio perfeito entre ataque e agilidade. <span class="tecla">P</span></li>
-        </ul>
-
-        <!-- Tabela de Atributos Base -->
-        <table class="tabela-atributos">
-            <thead>
-                <tr>
-                    <th>Herói</th>
-                    <th>Vida (HP)</th>
-                    <th>Ataque (ATK)</th>
-                    <th>Defesa (DEF)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Pedro (U)</strong></td>
-                    <td>150</td>
-                    <td>40</td>
-                    <td>80</td>
-                </tr>
-                <tr>
-                    <td><strong>Ingrid (I)</strong></td>
-                    <td>90</td>
-                    <td>30</td>
-                    <td>50</td>
-                </tr>
-                <tr>
-                    <td><strong>Otávio (O)</strong></td>
-                    <td>80</td>
-                    <td>100</td>
-                    <td>30</td>
-                </tr>
-                <tr>
-                    <td><strong>Uriel (P)</strong></td>
-                    <td>100</td>
-                    <td>70</td>
-                    <td>60</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h2>IV. Segredos da Sobrevivência (Evolução)</h2>
-        <ul class="lore-lista">
-            <li>Árvore de Talentos: Melhorias permanentes compradas com os tesouros de runs passadas.</li>
-            <li>Sinergia de Equipe: Combos ocultos ao alternar personagens específicos rapidamente.</li>
-        </ul>
-
-        <h2>V. Quadro de Tarefas Técnicas (Programação)</h2>
-        <ul class="prog-lista">
-            <li>Implementar Sistema de <span class="destaque-ouro">Movimentação 2D</span> com colisões.</li>
-            <li>Criar script de <span class="destaque-ouro">Troca de Heróis</span> mapeado nas teclas <span class="tecla">U</span> <span class="tecla">I</span> <span class="tecla">O</span> <span class="tecla">P</span>.</li>
-            <li>Desenvolver algoritmo <span class="destaque-ouro">Procedural</span> (Ex: *Random Walk* ou *BSP*) para as salas.</li>
-            <li>Construir Interface de <span class="destaque-ouro">Vida e Atributos</span> consumindo os dados da tabela acima.</li>
-        </ul>
     </div>
+</div>
 
 </body>
 </html>
