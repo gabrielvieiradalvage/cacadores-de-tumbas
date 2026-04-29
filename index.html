@@ -28,23 +28,23 @@
         /* Estrutura de Nós */
         .node {
             color: white;
-            padding: 15px 25px;
+            padding: 12px 20px;
             font-weight: bold;
             text-align: center;
             border-radius: 2px;
-            min-width: 140px;
+            min-width: 160px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         /* Cores dos Níveis */
-        .level-1 { background-color: var(--main-blue); font-size: 22px; width: 200px; }
+        .level-1 { background-color: var(--main-blue); font-size: 22px; width: 220px; }
         .level-2 { background-color: var(--sub-blue); margin-bottom: 20px; }
-        .level-3 { background-color: var(--leaf-green); margin-bottom: 10px; font-size: 14px; text-align: left; }
+        .level-3 { background-color: var(--leaf-green); margin-bottom: 8px; font-size: 13px; text-align: left; }
 
         /* Container das Colunas */
         .columns-container {
             display: flex;
-            gap: 40px;
+            gap: 30px;
             position: relative;
             margin-top: 40px;
         }
@@ -54,8 +54,8 @@
             content: "";
             position: absolute;
             top: -20px;
-            left: 10%;
-            right: 10%;
+            left: 12%;
+            right: 12%;
             height: 2px;
             background-color: var(--line-color);
         }
@@ -66,7 +66,7 @@
             position: relative;
         }
 
-        /* Linha Vertical que desce do topo para cada coluna */
+        /* Linha Vertical do topo para cada coluna */
         .column::before {
             content: "";
             position: absolute;
@@ -86,7 +86,7 @@
             flex-direction: column;
         }
 
-        /* Linha horizontal conectando o item verde à linha vertical */
+        /* Linha horizontal conectando o item verde */
         .level-3 {
             position: relative;
         }
@@ -110,44 +110,51 @@
 <body>
 
 <div class="sitemap">
-    <div class="node level-1">Home</div>
+    <!-- Nível 1 -->
+    <div class="node level-1">Caçadores da Tumba</div>
     <div class="home-line"></div>
 
     <div class="columns-container">
         
+        <!-- Coluna 1: Criadores -->
         <div class="column">
-            <div class="node level-2">Sobre</div>
+            <div class="node level-2">Equipe</div>
             <div class="sub-items">
-                <div class="node level-3">Giovanni, Lucas, Gabriel</div>
-                <div class="node level-3">O Projeto Roguelike</div>
+                <div class="node level-3">Giovanni</div>
+                <div class="node level-3">Gabriel Dalvage</div>
+                <div class="node level-3">Lucas Leonardo</div>
             </div>
         </div>
 
+        <!-- Coluna 2: Personagens -->
         <div class="column">
-            <div class="node level-2">Personagens</div>
+            <div class="node level-2">Troca (U, I, O, P)</div>
             <div class="sub-items">
                 <div class="node level-3">Pedro (Tanque)</div>
                 <div class="node level-3">Ingrid (Suporte)</div>
-                <div class="node level-3">Otávio (Distância)</div>
+                <div class="node level-3">Otávio (Dano)</div>
                 <div class="node level-3">Uriel (Versátil)</div>
             </div>
         </div>
 
+        <!-- Coluna 3: Formações Táticas -->
         <div class="column">
-            <div class="node level-2">Mecânicas</div>
+            <div class="node level-2">Formações</div>
             <div class="sub-items">
-                <div class="node level-3">Troca em Tempo Real</div>
-                <div class="node level-3">Teclas U, I, O e P</div>
-                <div class="node level-3">Mapas Procedurais</div>
+                <div class="node level-3">5: Fileira</div>
+                <div class="node level-3">6: Quadrada (2x2)</div>
+                <div class="node level-3">7: Cada um por si</div>
+                <div class="node level-3">8: Agrupar Todos</div>
             </div>
         </div>
 
+        <!-- Coluna 4: Gameplay Estratégica -->
         <div class="column">
-            <div class="node level-2">Gameplay</div>
+            <div class="node level-2">Movimentação</div>
             <div class="sub-items">
-                <div class="node level-3">Tutorial (Pedro)</div>
-                <div class="node level-3">Risco e Recompensa</div>
-                <div class="node level-3">Evolução do Jogador</div>
+                <div class="node level-3">Livre com Estratégia</div>
+                <div class="node level-3">Controle Individual</div>
+                <div class="node level-3">Progressão Roguelike</div>
             </div>
         </div>
 
