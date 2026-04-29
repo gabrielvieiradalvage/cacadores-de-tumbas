@@ -5,18 +5,21 @@
     <title>Sitemap - Caçadores da Tumba</title>
     <style>
         :root {
-            --main-blue: #3a89c9;
-            --sub-blue: #4fc3f7;
+            --main-blue: #2c3e50; /* Um azul mais escuro e imersivo para o título */
+            --sub-blue: #3a89c9;
             --leaf-green: #66bb6a;
-            --line-color: #bdbdbd;
+            --line-color: #95a5a6;
+            --bg-color: #ecf0f1;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f4;
+            background-color: var(--bg-color);
             display: flex;
             justify-content: center;
             padding: 50px;
+            /* Permite scroll horizontal em telas menores sem quebrar o mapa */
+            min-width: max-content; 
         }
 
         .sitemap {
@@ -31,32 +34,55 @@
             padding: 12px 20px;
             font-weight: bold;
             text-align: center;
-            border-radius: 2px;
-            min-width: 160px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 4px; /* Bordas um pouco mais arredondadas */
+            min-width: 190px; /* Mais largo para caber os textos novos */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+            transition: transform 0.2s; /* Efeito de hover suave */
+        }
+
+        .node:hover {
+            transform: translateY(-2px);
         }
 
         /* Cores dos Níveis */
-        .level-1 { background-color: var(--main-blue); font-size: 22px; width: 220px; }
-        .level-2 { background-color: var(--sub-blue); margin-bottom: 20px; }
-        .level-3 { background-color: var(--leaf-green); margin-bottom: 8px; font-size: 13px; text-align: left; }
+        .level-1 { 
+            background-color: var(--main-blue); 
+            font-size: 24px; 
+            width: 280px; 
+            padding: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .level-2 { 
+            background-color: var(--sub-blue); 
+            margin-bottom: 25px; 
+            font-size: 16px;
+        }
+        
+        .level-3 { 
+            background-color: var(--leaf-green); 
+            margin-bottom: 12px; 
+            font-size: 13px; 
+            text-align: left; 
+        }
 
         /* Container das Colunas */
         .columns-container {
             display: flex;
-            gap: 30px;
+            gap: 40px; /* Mais espaço entre as colunas */
             position: relative;
-            margin-top: 40px;
+            margin-top: 50px;
         }
 
-        /* Linhas Conectoras Superiores */
+        /* Linhas Conectoras Superiores (Eixo Principal) */
         .columns-container::before {
             content: "";
             position: absolute;
-            top: -20px;
-            left: 12%;
-            right: 12%;
-            height: 2px;
+            top: -25px;
+            left: 9%; /* Ajustado para alinhar perfeitamente com 5 colunas */
+            right: 9%;
+            height: 3px;
             background-color: var(--line-color);
         }
 
@@ -70,17 +96,17 @@
         .column::before {
             content: "";
             position: absolute;
-            top: -20px;
+            top: -25px;
             left: 50%;
-            width: 2px;
-            height: 20px;
+            width: 3px;
+            height: 25px;
             background-color: var(--line-color);
         }
 
         /* Linhas Verticais laterais para os itens verdes */
         .sub-items {
             border-left: 3px solid var(--line-color);
-            margin-left: 10px;
+            margin-left: 15px;
             padding-left: 20px;
             display: flex;
             flex-direction: column;
@@ -90,19 +116,21 @@
         .level-3 {
             position: relative;
         }
+        
         .level-3::before {
             content: "";
             position: absolute;
             left: -23px;
             top: 50%;
             width: 20px;
-            height: 2px;
+            height: 3px;
             background-color: var(--line-color);
         }
 
+        /* Linha que sai do bloco principal (Root) */
         .home-line {
-            width: 2px;
-            height: 20px;
+            width: 3px;
+            height: 25px;
             background-color: var(--line-color);
         }
     </style>
@@ -110,51 +138,66 @@
 <body>
 
 <div class="sitemap">
-    <!-- Nível 1 -->
+    <!-- Nível 1: Raiz do Projeto -->
     <div class="node level-1">Caçadores da Tumba</div>
     <div class="home-line"></div>
 
     <div class="columns-container">
         
-        <!-- Coluna 1: Criadores -->
+        <!-- Coluna 1: História (Lore) -->
         <div class="column">
-            <div class="node level-2">Equipe</div>
+            <div class="node level-2">História e Lore</div>
             <div class="sub-items">
-                <div class="node level-3">Giovanni</div>
-                <div class="node level-3">Gabriel Dalvage</div>
-                <div class="node level-3">Lucas Leonardo</div>
+                <div class="node level-3">Grupo Tomb Raid Masters</div>
+                <div class="node level-3">Sarcófago no Egito</div>
+                <div class="node level-3">Maldição do Faraó</div>
+                <div class="node level-3">Presos pelo Guardião (Chefe)</div>
+                <div class="node level-3">Busca pela Saída da Tumba</div>
             </div>
         </div>
 
         <!-- Coluna 2: Personagens -->
         <div class="column">
-            <div class="node level-2">Troca (U, I, O, P)</div>
+            <div class="node level-2">Heróis (Troca: U, I, O, P)</div>
             <div class="sub-items">
-                <div class="node level-3">Pedro (Tanque)</div>
-                <div class="node level-3">Ingrid (Suporte)</div>
-                <div class="node level-3">Otávio (Dano)</div>
-                <div class="node level-3">Uriel (Versátil)</div>
+                <div class="node level-3">Pedro (Tanque - Escudo)</div>
+                <div class="node level-3">Ingrid (Suporte - Cura)</div>
+                <div class="node level-3">Otávio (Dano à Distância)</div>
+                <div class="node level-3">Uriel (Híbrido/Versátil)</div>
             </div>
         </div>
 
-        <!-- Coluna 3: Formações Táticas -->
+        <!-- Coluna 3: Gameplay Base -->
         <div class="column">
-            <div class="node level-2">Formações</div>
+            <div class="node level-2">Sistema de Gameplay</div>
             <div class="sub-items">
-                <div class="node level-3">5: Fileira</div>
-                <div class="node level-3">6: Quadrada (2x2)</div>
-                <div class="node level-3">7: Cada um por si</div>
-                <div class="node level-3">8: Agrupar Todos</div>
+                <div class="node level-3">Tutorial: Pedro Acorda Só</div>
+                <div class="node level-3">Missão: Encontrar Aliados</div>
+                <div class="node level-3">Morte Permanente Infinita</div>
+                <div class="node level-3">Geração Procedural (Roguelike)</div>
+                <div class="node level-3">Ciclo: Morrer, Aprender, Evoluir</div>
             </div>
         </div>
 
-        <!-- Coluna 4: Gameplay Estratégica -->
+        <!-- Coluna 4: Táticas e Formações -->
         <div class="column">
-            <div class="node level-2">Movimentação</div>
+            <div class="node level-2">Combate Estratégico</div>
             <div class="sub-items">
-                <div class="node level-3">Livre com Estratégia</div>
-                <div class="node level-3">Controle Individual</div>
-                <div class="node level-3">Progressão Roguelike</div>
+                <div class="node level-3">Movimentação Livre no Mapa</div>
+                <div class="node level-3">Tecla 5: Formação em Fileira</div>
+                <div class="node level-3">Tecla 6: Quadrada (2x2)</div>
+                <div class="node level-3">Tecla 7: Livres (Cada um por si)</div>
+                <div class="node level-3">Tecla 8: Agrupar Todos</div>
+            </div>
+        </div>
+
+        <!-- Coluna 5: Desenvolvimento -->
+        <div class="column">
+            <div class="node level-2">Equipe de Desenvolvimento</div>
+            <div class="sub-items">
+                <div class="node level-3">Gabriel Dalvage</div>
+                <div class="node level-3">Lucas Leonardo</div>
+                <div class="node level-3">Giovanni</div>
             </div>
         </div>
 
