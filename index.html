@@ -4,95 +4,166 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sitemap - Caçadores da Tumba</title>
+    <!-- Importando fontes de aventura do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Special+Elite&display=swap" rel="stylesheet">
+    
     <style>
-        /* CSS Básico para organizar visualmente o sitemap */
+        /* 1. Definições Gerais e Fundo */
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #f4f4f4;
-            padding: 20px;
+            background-color: #2c1e14; /* Marrom bem escuro, como uma caverna */
+            background-image: url('https://www.transparenttextures.com/patterns/dark-leather.png'); /* Textura de couro */
+            font-family: 'Special+Elite', Courier, serif; /* Fonte estilo máquina de escrever antiga */
+            color: #3d2b1f;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            margin: 0;
         }
-        h1, h2 {
-            color: #2c3e50;
+
+        /* 2. O Contentor Pergaminho */
+        .sitemap-scroll {
+            background-color: #f2e3c9; /* Cor de papel envelhecido */
+            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+            max-width: 800px;
+            padding: 50px;
+            border: 15px solid #3d2b1f; /* Borda grossa de "madeira" */
+            border-image: none;
+            box-shadow: 0 0 50px rgba(0,0,0,0.8), inset 0 0 100px rgba(139, 69, 19, 0.2);
+            position: relative;
         }
-        .sitemap-container {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+        /* Detalhe de "Ouro" nas quinas */
+        .sitemap-scroll::before {
+            content: "✦";
+            position: absolute;
+            top: 10px; left: 10px;
+            color: #d4af37;
+            font-size: 24px;
         }
+
+        /* 3. Títulos Estilo Filme de Aventura */
+        h1 {
+            font-family: 'Cinzel', serif;
+            text-align: center;
+            text-transform: uppercase;
+            color: #8b4513;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 10px;
+            letter-spacing: 3px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            font-family: 'Cinzel', serif;
+            color: #b22222; /* Vermelho queimado para dar destaque */
+            margin-top: 30px;
+        }
+
+        /* 4. Estilização das Listas (O Mapa) */
         ul {
-            list-style-type: square;
+            list-style: none; /* Removemos as bolinhas padrão */
+            padding-left: 20px;
         }
+
         li {
-            margin: 10px 0;
+            margin: 15px 0;
+            position: relative;
         }
-        .personagens {
-            color: #e67e22;
+
+        /* Criando o marcador personalizado (X marca o lugar) */
+        li::before {
+            content: "✕"; 
+            color: #b22222;
             font-weight: bold;
+            position: absolute;
+            left: -25px;
+            top: 2px;
         }
+
+        /* Sub-listas com marcadores diferentes */
+        ul ul li::before {
+            content: "→";
+            color: #d4af37;
+        }
+
+        /* 5. Classes de Destaque */
+        .personagens {
+            background: rgba(212, 175, 55, 0.2); /* Fundo dourado suave */
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: #5d4037;
+        }
+
+        .tecla {
+            background: #3d2b1f;
+            color: #d4af37;
+            padding: 0 5px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+
         .mecanica {
-            color: #2980b9;
+            border-left: 3px solid #d4af37;
+            padding-left: 10px;
             font-style: italic;
         }
+
+        hr {
+            border: 0;
+            height: 2px;
+            background-image: linear-gradient(to right, transparent, #d4af37, transparent);
+            margin: 30px 0;
+        }
+
     </style>
 </head>
 <body>
 
-    <div class="sitemap-container">
-        <h1>Sitemap: Caçadores da Tumba (Roguelike 2D)</h1>
+    <div class="sitemap-scroll">
+        <h1>Manifesto da Expedição</h1>
+        <p style="text-align: center; font-style: italic;">"Caçadores da Tumba: Onde o perigo encontra a glória"</p>
+        
         <hr>
 
+        <h2>I. Posto de Comando (Menu)</h2>
         <ul>
-            <li><strong>Tela de Início</strong>
-                <ul>
-                    <li>Novo Jogo (Inicia Tutorial com Pedro)</li>
-                    <li>Continuar (Se houver progresso salvo)</li>
-                    <li>Opções (Configurações de Áudio e Controles)</li>
-                    <li>Sair</li>
-                </ul>
-            </li>
+            <li><strong>Nova Incursão:</strong> Inicia a jornada nas profundezas.</li>
+            <li><strong>Registros Antigos:</strong> Carrega um progresso salvo.</li>
+            <li><strong>Equipamentos:</strong> Ajustes de som e comandos.</li>
+            <li><strong>Abandonar Tumba:</strong> Fecha o jogo.</li>
+        </ul>
 
-            <li><strong>Fluxo de Jogo (Gameplay)</strong>
+        <h2>II. Diário de Campo (Gameplay)</h2>
+        <ul>
+            <li><strong>O Despertar (Tutorial):</strong>
                 <ul>
-                    <li>
-                        <strong>Fase 1: Tutorial Estruturado</strong>
-                        <ul>
-                            <li>Despertar de Pedro (Aprendizado de Movimentação)</li>
-                            <li>Combate Básico (Uso do Porrete e Escudo)</li>
-                            <li>Encontro com Aliados (Ingrid, Otávio e Uriel)</li>
-                            <li>Desbloqueio do Sistema de Alternância (Teclas U, I, O, P)</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Fase 2: O Ciclo Roguelike (Loop Principal)</strong>
-                        <ul>
-                            <li>Geração de Tumba Procedural (Mapas Aleatórios)</li>
-                            <li>Exploração e Coleta de Tesouros</li>
-                            <li>Combate Estratégico em Tempo Real</li>
-                            <li>Enfrentamento de Boss/Chefes de Tumba</li>
-                            <li>Morte e Retorno (Tela de Game Over / Evolução)</li>
-                        </ul>
-                    </li>
+                    <li>Sozinho no Escuro: Pedro aprende a sobreviver.</li>
+                    <li>Reunião da Equipe: Localizar Ingrid, Otávio e Uriel.</li>
+                    <li>Sincronia Tática: Alternância rápida de heróis.</li>
                 </ul>
             </li>
+            <li><strong>O Labirinto Eterno (Roguelike):</strong>
+                <ul>
+                    <li>Arquitetura Mutável: Mapas gerados por algoritmos.</li>
+                    <li>Saque de Relíquias: Tesouros e artefatos mágicos.</li>
+                    <li>O Guardião: Enfrentar o Boss da tumba.</li>
+                </ul>
+            </li>
+        </ul>
 
-            <li><strong>Sistema de Personagens (A Equipe)</strong>
-                <ul>
-                    <li class="personagens">Pedro (Tanque) - Tecla U</li>
-                    <li class="personagens">Ingrid (Suporte/Cura) - Tecla I</li>
-                    <li class="personagens">Otávio (Dano à Distância) - Tecla O</li>
-                    <li class="personagens">Uriel (Versátil/Equilibrado) - Tecla P</li>
-                </ul>
-            </li>
+        <h2>III. A Irmandade (Personagens)</h2>
+        <ul>
+            <li><span class="personagens">Pedro</span> - O Tanque (Escudo e Porrete) <span class="tecla">U</span></li>
+            <li><span class="personagens">Ingrid</span> - A Curandeira (Magia Vital) <span class="tecla">I</span></li>
+            <li><span class="personagens">Otávio</span> - O Atirador (Armas de Fogo) <span class="tecla">O</span></li>
+            <li><span class="personagens">Uriel</span> - O Polivalente (Combate Misto) <span class="tecla">P</span></li>
+        </ul>
 
-            <li><strong>Mecânicas de Evolução</strong>
-                <ul>
-                    <li class="mecanica">Melhorias de Habilidades (Upgrade Tree)</li>
-                    <li class="mecanica">Itens e Equipamentos Encontrados</li>
-                    <li class="mecanica">Conhecimento Acumulado (Lore e Estratégia)</li>
-                </ul>
-            </li>
+        <h2>IV. Segredos da Sobrevivência</h2>
+        <ul>
+            <li class="mecanica">Árvore de Talentos: Evolução permanente.</li>
+            <li class="mecanica">Ciclo de Reencarnação: Aprender com a derrota.</li>
         </ul>
     </div>
 
