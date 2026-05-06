@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDD - Olimpíadas do Mar Morto</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Special+Elite&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 1. FUNDO E ATMOSFERA ESPECTRAL */
+        body {
+            background-color: #051a1a;
+            background-image: 
+                radial-gradient(circle at center, rgba(0, 255, 127, 0.05) 0%, transparent 70%),
+                url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+            font-family: 'Special Elite', Courier, serif;
+            color: #a3d9d9;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            margin: 0;
+        }
+
+        /* 2. O PERGAMINHO ASSOMBRADO */
+        .pergaminho {
+            background-color: #1a2e2e;
+            background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+            max-width: 850px;
+            padding: 50px;
+            border: 10px double #2ecc71;
+            box-shadow: 0 0 30px rgba(46, 204, 113, 0.3), inset 0 0 100px rgba(0, 0, 0, 0.8);
+            position: relative;
+            border-radius: 5px;
+        }
+
+        /* Brilho Verde nas Quinas */
+        .pergaminho::after {
+            content: "☠";
+            position: absolute;
+            bottom: 10px; right: 15px;
+            color: #2ecc71;
+            font-size: 30px;
+            text-shadow: 0 0 10px #2ecc71;
+        }
+
+        /* 3. TIPOGRAFIA */
+        h1, h2 { font-family: 'Pirata One', cursive; text-align: center; text-transform: uppercase; letter-spacing: 3px; }
+        h1 { color: #2ecc71; font-size: 3.5rem; border-bottom: 3px solid #1abc9c; padding-bottom: 10px; margin-bottom: 10px; }
+        h2 { color: #1abc9c; margin-top: 40px; font-size: 2rem; text-align: left; border-bottom: 1px solid rgba(46, 204, 113, 0.4); }
+        
+        p { line-height: 1.6; text-align: justify; margin-bottom: 15px; color: #cbdada; }
+        
+        .destaque-zumbi { color: #2ecc71; font-weight: bold; text-shadow: 1px 1px 2px #000; }
+
+        /* 4. LISTAS */
+        ul { list-style: none; padding-left: 20px; }
+        li { margin: 12px 0; position: relative; }
+        .pirata-lista li::before { content: "⚓ "; color: #1abc9c; position: absolute; left: -30px; }
+
+        .tag-pirata { background: rgba(46, 204, 113, 0.2); padding: 3px 10px; border-radius: 15px; border: 1px solid #2ecc71; color: #fff; font-size: 0.9em; }
+
+        /* 5. TABELA DE ATRIBUTOS DOS CAPITÃES */
+        .tabela-piratas {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .tabela-piratas th {
+            background-color: #0b3d3d;
+            color: #2ecc71;
+            padding: 15px;
+            border-bottom: 2px solid #2ecc71;
+        }
+        .tabela-piratas td {
+            text-align: center;
+            padding: 15px;
+            border-bottom: 1px solid rgba(46, 204, 113, 0.2);
+        }
+        .tabela-piratas tr:hover { background-color: rgba(46, 204, 113, 0.1); }
+
+        hr { border: 0; height: 1px; background-image: linear-gradient(to right, transparent, #2ecc71, transparent); margin: 30px 0; }
+    </style>
+</head>
+<body>
+
+    <div class="pergaminho">
+        <h1>MAR MORTO: OLIMPÍADAS ZUMBI</h1>
+        <p style="text-align: center; font-style: italic; color: #1abc9c;">"A cada 100 anos, o silêncio das águas salgadas é quebrado pelo ranger de ossos e madeira."</p>
+        
+        <hr>
+
+        <h2>I. A Maldição do Mar Morto (História)</h2>
+        [span_0](start_span)<p>O jogo inicia em um mar pacífico com um pôr do sol idílico[span_0](end_span). [span_1](start_span)Mas não se engane: nestas águas tão salgadas que quase nada sobrevive[span_1](end_span)[span_2](start_span), apenas algas, bactérias e <span class="destaque-zumbi">Mortos-Vivos</span> resistem[span_2](end_span).</p>
+        [span_3](start_span)<p>A cada <span class="destaque-zumbi">100 anos</span>, os fantasmas dos maiores piratas da história emergem em seus navios amaldiçoados para uma competição brutal[span_3](end_span). O objetivo? [span_4](start_span)Decidir quem é o <span class="destaque-zumbi">Maior Pirata do Mundo</span>[span_4](end_span). [span_5](start_span)O vencedor leva uma fortuna em cérebros e o direito de assombrar estas águas por mais um século[span_5](end_span).</p>
+
+        <h2>II. Convés Principal (Menu)</h2>
+        <ul class="pirata-lista">
+            [span_6](start_span)<li><strong>Novo Jogo:</strong> Iniciar a competição centenária[span_6](end_span).</li>
+            [span_7](start_span)<li><strong>Carregar Jogo:</strong> Retomar uma jornada pirata salva[span_7](end_span).</li>
+            [span_8](start_span)<li><strong>Opções:</strong> Ajustar o som das ondas e a visão da tempestade[span_8](end_span).</li>
+            [span_9](start_span)<li><strong>Sair:</strong> Abandonar o navio e retornar à terra firme[span_9](end_span).</li>
+        </ul>
+
+        <h2>III. Os Competidores (Personagens)</h2>
+        [span_10](start_span)<p>Você poderá escolher entre lendas dos mares, cada um com habilidades únicas de dano e resistência[span_10](end_span):</p>
+        
+        <table class="tabela-piratas">
+            <thead>
+                <tr>
+                    <th>Capitão</th>
+                    <th>Poder Especial</th>
+                    <th>Atributo Foco</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="tag-pirata">Barba Negra</span></td>
+                    <td>Fúria das Sombras</td>
+                    <td>Dano Massivo</td>
+                </tr>
+                <tr>
+                    <td><span class="tag-pirata">Davy Jones</span></td>
+                    <td>Tentáculos Abissais</td>
+                    <td>Resistência</td>
+                </tr>
+                <tr>
+                    <td><span class="tag-pirata">Francis Drake</span></td>
+                    <td>Navegação Ágil</td>
+                    <td>Velocidade</td>
+                </tr>
+            </tbody>
+        </table>
+        [span_11](start_span)<p style="font-size: 0.9em; margin-top: 10px;">* Novos piratas e personagens originais podem ser desbloqueados conforme o progresso[span_11](end_span).</p>
+
+        <h2>IV. As Provas (Mini-jogos)</h2>
+        [span_12](start_span)<p>O torneio é composto por diversos desafios temáticos de esporte náutico[span_12](end_span):</p>
+        <ul class="pirata-lista">
+            [span_13](start_span)<li><strong>Batalha Naval:</strong> Teste de pontaria com canhões em meio à tempestade[span_13](end_span).</li>
+            [span_14](start_span)<li><strong>Corrida de Navios:</strong> Quem navega mais rápido entre os recifes do Mar Morto[span_14](end_span).</li>
+            [span_15](start_span)<li><strong>Luta de Espadas:</strong> Duelo direto entre os mortos-vivos no mastro do navio[span_15](end_span).</li>
+        </ul>
+
+        <h2>V. Notas de Desenvolvimento</h2>
+        <ul class="pirata-lista">
+            [span_16](start_span)[span_17](start_span)<li><strong>Clima Dinâmico:</strong> A transição do mar calmo para a tempestade verde deve ser acompanhada por trilha sonora "piratesca" (estilo Sea Shanty)[span_16](end_span)[span_17](end_span).</li>
+            [span_18](start_span)<li><strong>Evolução:</strong> Implementar sistema de upgrade para os navios e atributos dos piratas[span_18](end_span).</li>
+            [span_19](start_span)<li><strong>Visual:</strong> Manter a estética "family friendly" para os esqueletos e zumbis[span_19](end_span).</li>
+        </ul>
+    </div>
+
+</body>
+</html>
